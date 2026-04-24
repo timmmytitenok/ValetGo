@@ -11,7 +11,6 @@ import {
   UserCheck,
 } from "lucide-react";
 import BorderGlow from "./border-glow";
-import { MotionHover } from "./animations/motion-hover";
 import { Reveal } from "./animations/reveal";
 import { premiumEase } from "../../lib/motion";
 
@@ -82,14 +81,19 @@ export function WhyValetGoSection() {
 
           <h2
             id="why-valetgo-title"
-            className="mt-5 text-balance text-2xl font-bold leading-[1.08] tracking-tight text-zinc-50 sm:mt-6 sm:text-4xl lg:text-5xl"
+            className="mt-5 text-balance text-[1.65rem] font-bold leading-[1.08] tracking-tight text-zinc-50 sm:mt-6 sm:text-4xl lg:text-5xl"
           >
             More Than Parking — It&apos;s Your Event&apos;s First Impression
           </h2>
           </Reveal>
           <Reveal delay={0.1}>
-          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-zinc-200/80 sm:mt-6 sm:text-lg">
-            ValetGo creates a smooth, polished arrival experience for everyone.
+          <p className="mx-auto mb-8 mt-5 max-w-2xl text-pretty text-[0.88rem] leading-relaxed text-zinc-200/80 sm:mb-0 sm:mt-6 sm:text-lg">
+            <span className="sm:hidden">
+              ValetGo creates a smooth, polished arrival experience.
+            </span>
+            <span className="hidden sm:inline">
+              ValetGo creates a smooth, polished arrival experience for everyone.
+            </span>
           </p>
           </Reveal>
         </div>
@@ -107,11 +111,11 @@ export function WhyValetGoSection() {
                   className="group py-5 transition-all duration-300 first:pt-6 last:pb-6"
                 >
                     <div className="flex items-start gap-4">
-                      <div className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-400/35 bg-black/45 shadow-[0_0_0_1px_rgba(248,113,113,0.1),0_0_22px_rgba(220,38,38,0.22)] transition-all duration-300 group-hover:border-red-300/55 group-hover:bg-red-500/10 group-hover:shadow-[0_0_0_1px_rgba(251,113,133,0.15),0_0_30px_rgba(220,38,38,0.30)]">
-                        <Icon className="h-5 w-5 text-red-200/95 transition-colors duration-300 group-hover:text-red-100" />
+                      <div className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-400/35 bg-black/45 shadow-[0_0_0_1px_rgba(248,113,113,0.1),0_0_22px_rgba(220,38,38,0.22)] transition-all duration-300 sm:group-hover:border-red-300/55 sm:group-hover:bg-red-500/10 sm:group-hover:shadow-[0_0_0_1px_rgba(251,113,133,0.15),0_0_30px_rgba(220,38,38,0.30)]">
+                        <Icon className="h-5 w-5 text-red-200/95 transition-colors duration-300 sm:group-hover:text-red-100" />
                       </div>
-                      <div className="min-w-0 transition-transform duration-300 group-hover:translate-x-0.5">
-                        <h3 className="text-lg font-semibold tracking-tight text-zinc-100 transition-colors duration-300 group-hover:text-white">
+                      <div className="min-w-0 transition-transform duration-300 sm:group-hover:translate-x-0.5">
+                        <h3 className="text-lg font-semibold tracking-tight text-zinc-100 transition-colors duration-300 sm:group-hover:text-white">
                           {title}
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-zinc-300/78 sm:text-[0.95rem]">
@@ -124,30 +128,30 @@ export function WhyValetGoSection() {
             </ul>
 
             <Reveal delay={0.16}>
-              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-14 sm:flex-row sm:flex-wrap">
-                <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
+              <div className="mt-10 hidden flex-col items-center justify-center gap-3 sm:mt-14 sm:flex sm:flex-row sm:flex-wrap">
+                <div className="w-full sm:inline-flex sm:w-auto">
                   <Link
                     href="#quote"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(220,38,38,0.42)] transition-all duration-300 hover:bg-red-500 hover:shadow-[0_16px_32px_rgba(220,38,38,0.52)] sm:w-auto"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-4 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(220,38,38,0.42)] transition-all duration-300 sm:w-auto sm:py-3 sm:hover:bg-red-500 sm:hover:shadow-[0_16px_32px_rgba(220,38,38,0.52)]"
                   >
                     Request Quote
                     <ArrowRight className="h-4 w-4" />
                   </Link>
-                </MotionHover>
-                <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
+                </div>
+                <div className="w-full sm:inline-flex sm:w-auto">
                   <button
                     type="button"
                     onClick={scrollToHowItWorks}
-                    className="inline-flex w-full items-center justify-center rounded-2xl border border-white/22 bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-100/92 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/[0.07] hover:text-white sm:w-auto"
+                    className="inline-flex w-full items-center justify-center rounded-2xl border border-white/22 bg-white/[0.03] px-6 py-4 text-sm font-medium text-zinc-100/92 backdrop-blur-sm transition-all duration-300 sm:w-auto sm:py-3 sm:hover:border-white/40 sm:hover:bg-white/[0.07] sm:hover:text-white"
                   >
                     See How It Works
                   </button>
-                </MotionHover>
+                </div>
               </div>
             </Reveal>
           </div>
 
-          <Reveal delay={0.12} distance={26} blur={6} className="relative lg:pl-8 xl:pl-12">
+          <Reveal delay={0.12} distance={26} blur={6} className="relative py-6 lg:py-0 lg:pl-8 xl:pl-12">
             <div
               className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-[radial-gradient(circle,rgba(220,38,38,0.12)_0%,rgba(127,29,29,0.05)_38%,rgba(0,0,0,0)_74%)] blur-2xl"
               aria-hidden
@@ -163,7 +167,10 @@ export function WhyValetGoSection() {
               animated={false}
               colors={["#fda4af", "#f87171", "#fb7185"]}
               fillOpacity={0.22}
-              className="relative mx-auto w-full max-w-[30rem] transition-transform duration-300 hover:-translate-y-0.5 sm:max-w-[32rem] lg:ml-auto lg:max-w-[30rem] xl:max-w-[31rem]"
+              scrollReactivePoints={[{ x: -0.3, y: 0.55 }]}
+              scrollReactiveOnMobileOnly
+              disablePointerTrackingOnMobileOnly
+              className="relative mx-auto w-full max-w-[30rem] pointer-events-none transition-transform duration-300 sm:pointer-events-auto sm:hover:-translate-y-0.5 sm:max-w-[32rem] lg:ml-auto lg:max-w-[30rem] xl:max-w-[31rem]"
             >
               <div className="overflow-hidden rounded-3xl bg-gradient-to-b from-white/[0.07] via-white/[0.025] to-white/[0.01] p-3 shadow-[0_24px_62px_rgba(0,0,0,0.56)] backdrop-blur-sm">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-black/25">
@@ -200,6 +207,25 @@ export function WhyValetGoSection() {
             </BorderGlow>
           </Reveal>
         </div>
+
+        <Reveal delay={0.2}>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 pb-8 sm:hidden">
+            <Link
+              href="#quote"
+              className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-4 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(220,38,38,0.42)] transition-all duration-300"
+            >
+              Request Quote
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <button
+              type="button"
+              onClick={scrollToHowItWorks}
+              className="inline-flex min-h-14 w-full items-center justify-center rounded-2xl border border-white/22 bg-white/[0.03] px-6 py-4 text-sm font-medium text-zinc-100/92 backdrop-blur-sm transition-all duration-300"
+            >
+              See How It Works
+            </button>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
