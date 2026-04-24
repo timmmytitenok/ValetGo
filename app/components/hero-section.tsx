@@ -29,9 +29,9 @@ export function HeroSection() {
         aria-hidden
       />
 
-      <div className="absolute inset-0 bg-black/1" aria-hidden />
+      <div className="absolute inset-0 bg-black/0 sm:bg-black/1" aria-hidden />
       <div
-        className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/95"
+        className="absolute inset-0 bg-gradient-to-b from-black/72 via-black/54 to-black/80 sm:from-black/90 sm:via-black/70 sm:to-black/95"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 z-[2] hidden opacity-30 md:block" aria-hidden>
@@ -52,19 +52,19 @@ export function HeroSection() {
         />
       </div>
       <div
-        className="pointer-events-none absolute left-1/2 top-36 h-[480px] w-[860px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(190,24,24,0.44)_0%,rgba(127,29,29,0.26)_38%,rgba(0,0,0,0)_78%)] opacity-85 blur-3xl sm:opacity-100"
+        className="pointer-events-none absolute left-1/2 top-36 h-[480px] w-[860px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(190,24,24,0.24)_0%,rgba(127,29,29,0.14)_38%,rgba(0,0,0,0)_78%)] opacity-60 blur-3xl sm:bg-[radial-gradient(circle,rgba(190,24,24,0.44)_0%,rgba(127,29,29,0.26)_38%,rgba(0,0,0,0)_78%)] sm:opacity-100"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-28 h-44 w-[26rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(248,113,113,0.32)_0%,rgba(127,29,29,0.16)_45%,rgba(0,0,0,0)_82%)] opacity-45 blur-2xl sm:opacity-100"
+        className="pointer-events-none absolute left-1/2 top-28 h-44 w-[26rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(248,113,113,0.2)_0%,rgba(127,29,29,0.1)_45%,rgba(0,0,0,0)_82%)] opacity-30 blur-2xl sm:bg-[radial-gradient(circle,rgba(248,113,113,0.32)_0%,rgba(127,29,29,0.16)_45%,rgba(0,0,0,0)_82%)] sm:opacity-100"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute right-[-8%] top-[12%] h-[430px] w-[430px] rounded-full bg-[radial-gradient(circle,rgba(153,27,27,0.25)_0%,rgba(0,0,0,0)_72%)] opacity-45 blur-3xl sm:opacity-100"
+        className="pointer-events-none absolute right-[-8%] top-[12%] h-[430px] w-[430px] rounded-full bg-[radial-gradient(circle,rgba(153,27,27,0.14)_0%,rgba(0,0,0,0)_72%)] opacity-28 blur-3xl sm:bg-[radial-gradient(circle,rgba(153,27,27,0.25)_0%,rgba(0,0,0,0)_72%)] sm:opacity-100"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute left-1/2 top-[56%] h-48 w-[32rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(220,38,38,0.18)_0%,rgba(0,0,0,0)_72%)] opacity-45 blur-2xl sm:opacity-100"
+        className="pointer-events-none absolute left-1/2 top-[56%] h-48 w-[32rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(220,38,38,0.1)_0%,rgba(0,0,0,0)_72%)] opacity-28 blur-2xl sm:bg-[radial-gradient(circle,rgba(220,38,38,0.18)_0%,rgba(0,0,0,0)_72%)] sm:opacity-100"
         aria-hidden
       />
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-start justify-center px-4 pb-16 pt-[6.5rem] sm:px-6 sm:pb-20 sm:pt-[10.5rem]">
