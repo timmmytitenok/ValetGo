@@ -17,11 +17,11 @@ const shareImage = `${SITE_URL}/icon.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "ValetGo | Premium Event Valet Service",
+  title: "ValetGo | Premium Valet Service",
   description:
     "Luxury event valet service for weddings, private events, and premium guest arrivals across Columbus Ohio.",
   openGraph: {
-    title: "ValetGo | Premium Event Valet Service",
+    title: "ValetGo | Premium Valet Service",
     description:
       "Luxury event valet service for weddings, private events, and premium guest arrivals across Columbus Ohio.",
     url: "/",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "ValetGo | Premium Event Valet Service",
+    title: "ValetGo | Premium Valet Service",
     description:
       "Luxury event valet service for weddings, private events, and premium guest arrivals across Columbus Ohio.",
     images: [shareImage],
