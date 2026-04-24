@@ -91,7 +91,7 @@ export function HeroSection() {
 
           <Reveal delay={0.38} distance={26} blur={6}>
             <div className="relative left-1/2 mt-8 flex w-screen -translate-x-1/2 flex-col justify-center gap-3 px-10 sm:left-auto sm:mt-9 sm:w-full sm:max-w-xl sm:translate-x-0 sm:flex-row sm:items-center sm:gap-4 sm:p-3 sm:px-0">
-              <MotionHover type="button" className="order-2 w-full sm:order-1 sm:inline-flex sm:w-auto">
+              <MotionHover type="button" className="order-1 w-full sm:order-1 sm:inline-flex sm:w-auto">
                 <Link
                   href="#quote"
                   className="inline-flex min-h-16 w-full items-center justify-center gap-2.5 rounded-2xl bg-red-600 px-7 py-4 text-lg font-semibold text-white shadow-[0_12px_34px_rgba(220,38,38,0.45)] transition-all duration-300 hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 sm:min-h-0 sm:w-auto sm:gap-2 sm:px-7 sm:py-3.5 sm:text-base"
@@ -100,7 +100,7 @@ export function HeroSection() {
                   <ArrowRight className="h-5 w-5 sm:h-4 sm:w-4" />
                 </Link>
               </MotionHover>
-              <MotionHover type="button" className="order-1 mt-4 w-full sm:order-2 sm:mt-0 sm:inline-flex sm:w-auto">
+              <MotionHover type="button" className="order-2 mt-4 w-full sm:order-2 sm:mt-0 sm:inline-flex sm:w-auto">
                 <Link
                   href="tel:6142181599"
                   className="inline-flex min-h-16 w-full items-center justify-center gap-2.5 rounded-2xl border border-white/25 bg-black/35 px-7 py-4 text-lg font-medium text-white/95 backdrop-blur-sm transition-all duration-300 hover:border-white/45 hover:bg-white/12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-0 sm:w-auto sm:gap-2 sm:px-7 sm:py-3.5 sm:text-base"
