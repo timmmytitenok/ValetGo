@@ -96,14 +96,15 @@ export function Navbar() {
               </Link>
             </MotionHover>
             <MotionHover type="button" className="inline-flex">
-              <Link
-                href="#quote"
+              <button
+                type="button"
+                aria-disabled="true"
                 className="inline-flex items-center gap-1.5 rounded-xl bg-red-600 px-3 py-2 text-xs font-semibold text-white shadow-[0_8px_24px_rgba(220,38,38,0.42)] transition-all duration-300 hover:bg-red-500 sm:gap-2 sm:px-5 sm:text-sm"
               >
                 <span className="sm:hidden">Quote</span>
                 <span className="hidden sm:inline">Request Quote</span>
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </button>
             </MotionHover>
           </div>
         </nav>

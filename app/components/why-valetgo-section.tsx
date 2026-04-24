@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -123,13 +122,14 @@ export function WhyValetGoSection() {
             <Reveal delay={0.16}>
               <div className="mt-10 hidden flex-col items-center justify-center gap-3 sm:mt-14 sm:flex sm:flex-row sm:flex-wrap">
                 <div className="w-full sm:inline-flex sm:w-auto">
-                  <Link
-                    href="#quote"
+                  <button
+                    type="button"
+                    aria-disabled="true"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-4 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(220,38,38,0.42)] transition-all duration-300 sm:w-auto sm:py-3 sm:hover:bg-red-500 sm:hover:shadow-[0_16px_32px_rgba(220,38,38,0.52)]"
                   >
                     Request Quote
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </button>
                 </div>
                 <div className="w-full sm:inline-flex sm:w-auto">
                   <button
@@ -203,13 +203,14 @@ export function WhyValetGoSection() {
 
         <Reveal delay={0.2}>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 pb-8 sm:hidden">
-            <Link
-              href="#quote"
+            <button
+              type="button"
+              aria-disabled="true"
               className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-4 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(220,38,38,0.42)] transition-all duration-300"
             >
               Request Quote
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </button>
             <button
               type="button"
               onClick={scrollToHowItWorks}

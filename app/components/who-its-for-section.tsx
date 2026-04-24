@@ -136,13 +136,14 @@ export function WhoItsForSection() {
           <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:mt-20">
             <div className="flex w-full max-w-xl flex-col justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
-              <Link
-                href="#quote"
+              <button
+                type="button"
+                aria-disabled="true"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_12px_34px_rgba(220,38,38,0.42)] transition-all duration-300 hover:bg-red-500 hover:shadow-[0_18px_44px_rgba(220,38,38,0.5)] sm:w-auto sm:px-7 sm:py-4 sm:text-base"
               >
                 Request Quote
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </button>
             </MotionHover>
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
               <Link
