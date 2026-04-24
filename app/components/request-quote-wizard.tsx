@@ -239,7 +239,7 @@ export function RequestQuoteWizard() {
   const showError = attemptedNext && !currentValid;
 
   return (
-    <section className="relative min-h-dvh overflow-hidden px-4 py-8 text-white sm:px-6 sm:py-12">
+    <section className="relative min-h-dvh overflow-x-hidden px-4 pb-24 pt-8 text-white sm:px-6 sm:pb-12 sm:pt-12">
       <div className="pointer-events-none absolute inset-0">
         <SoftAurora
           speed={0.6}
@@ -302,7 +302,7 @@ export function RequestQuoteWizard() {
                 <p className="mt-2 text-6xl font-semibold tracking-tight text-zinc-100 sm:text-7xl">
                   {formatCountdown(timeLeft)}
                 </p>
-                <div className="mb-1 mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <div className="mb-1 mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                   <MotionHover type="button" className="inline-flex">
                     <Link
                       href="/"
@@ -339,14 +339,14 @@ export function RequestQuoteWizard() {
                           onChange={(event) => setAnswer(field.key, event.target.value)}
                           placeholder={field.placeholder}
                           rows={4}
-                          className="w-full rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55"
+                          className="w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55"
                         />
                       ) : null}
                       {field.type === "select" ? (
                         <select
                           value={answers[field.key]}
                           onChange={(event) => setAnswer(field.key, event.target.value)}
-                          className="w-full rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors focus:border-red-300/55"
+                          className="w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors focus:border-red-300/55"
                         >
                           <option value="">Select one</option>
                           {field.options?.map((option) => (
@@ -368,9 +368,19 @@ export function RequestQuoteWizard() {
                             setAnswer(field.key, event.target.value);
                           }}
                           placeholder={field.placeholder}
-                          inputMode={field.type === "tel" ? "numeric" : undefined}
+                          inputMode={
+                            field.type === "tel" || field.type === "number"
+                              ? "numeric"
+                              : undefined
+                          }
                           maxLength={field.type === "tel" ? 14 : undefined}
-                          className="w-full rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55"
+                          min={field.type === "number" ? 1 : undefined}
+                          pattern={field.type === "number" ? "[0-9]*" : undefined}
+                          className={`w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55 ${
+                            field.type === "date" || field.type === "time"
+                              ? "pr-10"
+                              : ""
+                          }`}
                         />
                       ) : null}
                     </div>
