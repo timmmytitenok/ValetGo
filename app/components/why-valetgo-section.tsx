@@ -182,15 +182,15 @@ export function WhyValetGoSection() {
                     sizes="(min-width: 1024px) 36vw, (min-width: 768px) 70vw, 100vw"
                   />
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/8"
+                    className="absolute inset-0 bg-gradient-to-t from-black/38 via-black/14 to-black/5"
                     aria-hidden
                   />
                   <div
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(239,68,68,0.16)_0%,rgba(0,0,0,0)_56%)]"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(239,68,68,0.1)_0%,rgba(0,0,0,0)_56%)]"
                     aria-hidden
                   />
                   <div
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,0,0,0)_20%,rgba(0,0,0,0.22)_70%,rgba(0,0,0,0.42)_100%)]"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(0,0,0,0)_20%,rgba(0,0,0,0.16)_70%,rgba(0,0,0,0.3)_100%)]"
                     aria-hidden
                   />
 
@@ -199,7 +199,7 @@ export function WhyValetGoSection() {
                       SIGNATURE SERVICE
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-100/90">
-                      Elevated service from first arrival to final key return.
+                      Elevated service from first arrival to return.
                     </p>
                   </div>
                 </div>

@@ -30,19 +30,18 @@ export function HowItWorksSection() {
   return (
     <section
       id="how-it-works"
-      className="relative flex w-full items-center overflow-hidden border-t border-white/10 bg-[#040404] py-16 sm:min-h-[49rem] sm:py-28 lg:min-h-[55rem] lg:py-32"
+      className="relative flex w-full items-center overflow-hidden border-t border-white/10 bg-[#040404] pb-28 pt-16 sm:min-h-[49rem] sm:py-28 lg:min-h-[55rem] lg:py-32"
       aria-labelledby="how-it-works-title"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/how-it-works-background.png')" }}
+        className="absolute inset-0 bg-[url('/how-it-works-background-mobile.png')] bg-cover bg-center bg-no-repeat sm:bg-[url('/how-it-works-background.png')]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/88"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/72 via-black/58 to-black/66 sm:from-black/90 sm:via-black/80 sm:to-black/88"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-0 bg-black/22" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-black/14 sm:bg-black/22" aria-hidden />
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(220,38,38,0.22)_0%,rgba(127,29,29,0.08)_44%,rgba(0,0,0,0)_78%)] blur-3xl"
         aria-hidden
@@ -51,26 +50,28 @@ export function HowItWorksSection() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:-translate-y-6 sm:px-6 lg:-translate-y-7">
         <header className="mx-auto max-w-4xl text-center">
           <Reveal>
-            <p className="text-xs font-semibold tracking-[0.28em] text-red-200/82">
+            <p className="mt-0 text-xs font-semibold tracking-[0.28em] text-red-200/82 sm:mt-0">
               HOW IT WORKS
             </p>
           </Reveal>
           <Reveal delay={0.08}>
             <h2
               id="how-it-works-title"
-              className="mx-auto mt-5 max-w-4xl text-balance text-2xl font-bold tracking-tight text-zinc-50 sm:mt-6 sm:text-4xl lg:text-5xl"
+              className="mx-auto mt-5 max-w-4xl text-balance text-[2.8rem] font-bold leading-[1.02] tracking-tight text-zinc-50 sm:mt-6 sm:text-4xl lg:text-5xl"
             >
-              Simple Setup. Smooth Arrival.
+              <span className="block sm:hidden">Simple Setup.</span>
+              <span className="mt-4 block sm:hidden">Smooth Arrival.</span>
+              <span className="hidden sm:inline">Simple Setup. Smooth Arrival.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-relaxed tracking-[0.01em] text-zinc-200/80 sm:text-lg">
+            <p className="mx-auto mb-10 mt-4 max-w-3xl text-pretty text-sm leading-relaxed tracking-[0.01em] text-zinc-200/80 sm:mb-0 sm:text-lg">
               Tell us about your event. We&apos;ll handle the rest.
             </p>
           </Reveal>
         </header>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-3">
           {steps.map((step, index) => (
             <Reveal
               key={step.number}
@@ -79,8 +80,8 @@ export function HowItWorksSection() {
               blur={5}
               className="h-full"
             >
-              <MotionHover type="card" className="h-full">
-                <article className="group relative h-full overflow-visible transition-all duration-300">
+              <MotionHover type="card" className="h-full pointer-events-none sm:pointer-events-auto">
+                <article className="group relative h-full overflow-visible transition-all duration-300 sm:hover:transition-all">
                   <BorderGlow
                     edgeSensitivity={30}
                     glowColor="0 80 68"
@@ -92,6 +93,9 @@ export function HowItWorksSection() {
                     animated={false}
                     colors={["#fb7185", "#ef4444", "#f97316"]}
                     fillOpacity={0.42}
+                    scrollReactivePoints={[{ x: 1, y: 0.5 }]}
+                    scrollReactiveOnMobileOnly
+                    disablePointerTrackingOnMobileOnly
                     className="h-full"
                   >
                     <div className="relative flex h-full flex-col p-6 sm:p-7">

@@ -45,6 +45,10 @@ const faqs: FAQ[] = [
   },
 ];
 
+const CONTACT_EMAIL = "valetgoohio@gmail.com";
+const CONTACT_SUBJECT = "ValetGo Contact Us";
+const contactUsHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(CONTACT_SUBJECT)}`;
+
 function FAQItem({
   faq,
   index,
@@ -68,14 +72,14 @@ function FAQItem({
       className={`group relative overflow-hidden border backdrop-blur-sm transition-all duration-500 ${
         isOpen
           ? "rounded-3xl border-red-300/36 bg-gradient-to-b from-[#161616]/96 via-[#0f0f0f]/93 to-[#0a0a0a]/95 shadow-[0_24px_56px_rgba(0,0,0,0.6)]"
-          : "rounded-2xl border-white/10 bg-gradient-to-b from-white/[0.04] via-white/[0.025] to-white/[0.015] shadow-[0_12px_30px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 hover:border-white/20 hover:bg-gradient-to-b hover:from-white/[0.05] hover:via-white/[0.03] hover:to-white/[0.018] hover:shadow-[0_18px_42px_rgba(0,0,0,0.48)]"
+          : "rounded-2xl border-white/10 bg-gradient-to-b from-white/[0.04] via-white/[0.025] to-white/[0.015] shadow-[0_12px_30px_rgba(0,0,0,0.4)] sm:hover:-translate-y-0.5 sm:hover:border-white/20 sm:hover:bg-gradient-to-b sm:hover:from-white/[0.05] sm:hover:via-white/[0.03] sm:hover:to-white/[0.018] sm:hover:shadow-[0_18px_42px_rgba(0,0,0,0.48)]"
       }`}
     >
       <div
         className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
           isOpen
             ? "opacity-100 bg-[radial-gradient(circle_at_12%_8%,rgba(239,68,68,0.2)_0%,rgba(127,29,29,0.07)_35%,rgba(0,0,0,0)_74%)]"
-            : "opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_12%_8%,rgba(239,68,68,0.12)_0%,rgba(127,29,29,0.04)_35%,rgba(0,0,0,0)_74%)]"
+            : "opacity-0 sm:group-hover:opacity-100 bg-[radial-gradient(circle_at_12%_8%,rgba(239,68,68,0.12)_0%,rgba(127,29,29,0.04)_35%,rgba(0,0,0,0)_74%)]"
         }`}
         aria-hidden
       />
@@ -87,14 +91,14 @@ function FAQItem({
           aria-expanded={isOpen}
           aria-controls={answerId}
           className={`relative flex w-full items-center justify-between gap-4 text-left ${
-            isOpen ? "px-6 py-6 sm:px-8 sm:py-7" : "px-5 py-4 sm:px-6 sm:py-5"
+            isOpen ? "px-5 py-5 sm:px-8 sm:py-7" : "px-4 py-4 sm:px-6 sm:py-5"
           }`}
         >
           <span
             className={`leading-relaxed tracking-[0.01em] transition-colors duration-300 ${
               isOpen
-                ? "text-base font-semibold text-zinc-50 sm:text-[1.2rem]"
-                : "text-[0.95rem] font-medium text-zinc-100/90 group-hover:text-zinc-50 sm:text-[1.07rem]"
+                ? "text-[0.98rem] font-semibold text-zinc-50 sm:text-[1.2rem]"
+                : "text-[0.9rem] font-medium text-zinc-100/90 sm:group-hover:text-zinc-50 sm:text-[1.07rem]"
             }`}
           >
             {faq.question}
@@ -102,12 +106,12 @@ function FAQItem({
           <span
             className={`inline-flex shrink-0 items-center justify-center rounded-xl border transition-all duration-500 ${
               isOpen
-                ? "h-11 w-11 border-red-300/45 bg-red-500/18 text-red-100 shadow-[0_0_26px_rgba(220,38,38,0.34)]"
-                : "h-10 w-10 border-white/14 bg-black/35 text-zinc-200/78 group-hover:border-white/26 group-hover:text-zinc-50"
+                ? "h-10 w-10 border-red-300/45 bg-red-500/18 text-red-100 shadow-[0_0_26px_rgba(220,38,38,0.34)] sm:h-11 sm:w-11"
+                : "h-9 w-9 border-white/14 bg-black/35 text-zinc-200/78 sm:h-10 sm:w-10 sm:group-hover:border-white/26 sm:group-hover:text-zinc-50"
             }`}
           >
             <ChevronDown
-              className={`h-5 w-5 transition-transform duration-500 ${
+              className={`h-4 w-4 transition-transform duration-500 sm:h-5 sm:w-5 ${
                 isOpen ? "rotate-180" : "rotate-0"
               }`}
             />
@@ -127,7 +131,7 @@ function FAQItem({
           className="overflow-hidden"
         >
           <p
-            className={`px-5 pb-5 text-sm leading-relaxed tracking-[0.01em] transition-all duration-500 sm:px-8 sm:pb-7 sm:text-base ${
+            className={`px-4 pb-5 text-[0.92rem] leading-relaxed tracking-[0.01em] transition-all duration-500 sm:px-8 sm:pb-7 sm:text-base ${
               isOpen
                 ? "translate-y-0 text-zinc-200/86 opacity-100"
                 : "-translate-y-1 text-zinc-200/74 opacity-0"
@@ -147,7 +151,7 @@ export function FAQSection() {
 
   return (
     <section
-      className="relative w-full overflow-hidden border-t border-white/10 bg-gradient-to-b from-[#060606] via-[#050505] to-[#040404] py-16 sm:py-28 lg:py-32"
+      className="relative w-full overflow-hidden border-t border-white/10 bg-gradient-to-b from-[#060606] via-[#050505] to-[#040404] py-14 sm:py-28 lg:py-32"
       aria-labelledby="faq-title"
     >
       <div
@@ -189,19 +193,25 @@ export function FAQSection() {
           <Reveal delay={0.08}>
             <h2
               id="faq-title"
-              className="mt-4 text-balance text-2xl font-bold tracking-tight text-zinc-50 sm:mt-5 sm:text-4xl lg:text-5xl"
+              className="mt-4 text-balance text-[2.3rem] font-bold leading-[1.06] tracking-tight text-zinc-50 sm:mt-5 sm:text-4xl lg:text-5xl"
             >
               Frequently Asked Questions
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed tracking-[0.01em] text-zinc-200/78 sm:text-lg">
-              Everything you need to know before booking ValetGo for your event.
+            <p className="mx-auto mb-6 mt-5 max-w-2xl text-pretty text-[0.95rem] leading-relaxed tracking-[0.01em] text-zinc-200/78 sm:mb-0 sm:mt-6 sm:text-lg">
+              <span className="sm:hidden">
+                Everything you need to know before booking.
+              </span>
+              <span className="hidden sm:inline">
+                Everything you need to know before booking ValetGo for your
+                event.
+              </span>
             </p>
           </Reveal>
         </header>
 
-        <div className="mt-10 space-y-3.5 sm:mt-14 sm:space-y-5">
+        <div className="mt-9 space-y-3 sm:mt-14 sm:space-y-5">
           {faqs.map((faq, index) => (
             <Reveal key={faq.question} delay={0.14 + index * 0.07} distance={18} blur={5}>
               <FAQItem
@@ -217,14 +227,26 @@ export function FAQSection() {
 
         <Reveal delay={0.26}>
           <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed tracking-[0.01em] text-zinc-300/62">
-            Still have questions?{" "}
-            <Link
-              href="#quote"
-              className="text-zinc-200/84 underline decoration-white/26 underline-offset-4 transition-colors duration-300 hover:text-zinc-50 hover:decoration-red-300/52"
-            >
-              Contact Us
-            </Link>{" "}
-            and we&apos;ll walk you through it.
+            <span className="block sm:hidden">Still have questions?</span>
+            <span className="mb-6 mt-2 block sm:hidden">
+              <Link
+                href={contactUsHref}
+                className="text-zinc-200/84 underline decoration-white/26 underline-offset-4 transition-colors duration-300 hover:text-zinc-50 hover:decoration-red-300/52"
+              >
+                Contact Us
+              </Link>{" "}
+              and we&apos;ll walk you through it.
+            </span>
+            <span className="hidden sm:inline">
+              Still have questions?{" "}
+              <Link
+                href={contactUsHref}
+                className="text-zinc-200/84 underline decoration-white/26 underline-offset-4 transition-colors duration-300 hover:text-zinc-50 hover:decoration-red-300/52"
+              >
+                Contact Us
+              </Link>{" "}
+              and we&apos;ll walk you through it.
+            </span>
           </p>
         </Reveal>
       </div>
