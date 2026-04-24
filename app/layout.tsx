@@ -12,10 +12,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://valetgoohio.com";
+const shareImage = `${SITE_URL}/icon.png`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "ValetGo | Premium Event Valet Service",
   description:
     "Luxury event valet service for weddings, private events, and premium guest arrivals across Columbus Ohio.",
+  openGraph: {
+    title: "ValetGo | Premium Event Valet Service",
+    description:
+      "Luxury event valet service for weddings, private events, and premium guest arrivals across Columbus Ohio.",
+    url: "/",
+    siteName: "ValetGo",
+    type: "website",
+    images: [
+      {
+        url: shareImage,
+        width: 512,
+        height: 512,
+        alt: "ValetGo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "ValetGo | Premium Event Valet Service",
+    description:
+      "Luxury event valet service for weddings, private events, and premium guest arrivals across Columbus Ohio.",
+    images: [shareImage],
+  },
 };
 
 export const viewport: Viewport = {
