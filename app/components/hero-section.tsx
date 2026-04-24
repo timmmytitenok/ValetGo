@@ -25,8 +25,7 @@ export function HeroSection() {
             : { filter: "blur(0px)", scale: 1, opacity: 1 }
         }
         transition={{ duration: 1.15, ease: premiumEase, delay: 0.03 }}
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/hero-background.png')" }}
+        className="absolute inset-0 bg-[url('/hero-background-mobile.png')] bg-cover bg-center bg-no-repeat sm:bg-[url('/hero-background.png')]"
         aria-hidden
       />
 
