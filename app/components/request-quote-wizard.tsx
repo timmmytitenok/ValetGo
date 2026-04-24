@@ -240,7 +240,7 @@ export function RequestQuoteWizard() {
 
   return (
     <section className="relative min-h-dvh overflow-x-hidden px-4 pb-24 pt-8 text-white sm:px-6 sm:pb-12 sm:pt-12">
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none fixed inset-0 z-0">
         <SoftAurora
           speed={0.6}
           scale={1.5}
@@ -258,7 +258,7 @@ export function RequestQuoteWizard() {
           mouseInfluence={0.25}
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/72 via-black/58 to-black/76" />
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-gradient-to-b from-black/72 via-black/58 to-black/76" />
       <div className="relative z-10 mx-auto w-full max-w-2xl">
         <Link
           href="/"
@@ -331,7 +331,7 @@ export function RequestQuoteWizard() {
 
                 <div className="mt-6 space-y-4">
                   {currentSection.fields.map((field) => (
-                    <div key={field.key} className="space-y-1.5">
+                    <div key={field.key} className="space-y-1.5 overflow-hidden">
                       <label className="block text-sm font-medium text-zinc-200/90">{field.label}</label>
                       {field.type === "textarea" ? (
                         <textarea
@@ -376,9 +376,9 @@ export function RequestQuoteWizard() {
                           maxLength={field.type === "tel" ? 14 : undefined}
                           min={field.type === "number" ? 1 : undefined}
                           pattern={field.type === "number" ? "[0-9]*" : undefined}
-                          className={`w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55 ${
+                          className={`block w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55 ${
                             field.type === "date" || field.type === "time"
-                              ? "pr-10"
+                              ? "pr-10 text-sm sm:text-base [&::-webkit-date-and-time-value]:text-left [&::-webkit-datetime-edit]:min-w-0 [&::-webkit-datetime-edit-fields-wrapper]:min-w-0"
                               : ""
                           }`}
                         />
