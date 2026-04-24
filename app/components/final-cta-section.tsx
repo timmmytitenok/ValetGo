@@ -34,13 +34,13 @@ export function FinalCTASection() {
           </h2>
         </Reveal>
         <Reveal delay={0.16} amount={0.35}>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-sm leading-relaxed tracking-[0.01em] text-zinc-200/82 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-sm leading-relaxed tracking-[0.01em] text-zinc-200/82 sm:mt-6 sm:text-base">
             Tell us about your event — we&apos;ll handle the rest.
           </p>
         </Reveal>
 
         <Reveal delay={0.24} amount={0.35}>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
               <Link
                 href="#quote"
@@ -63,7 +63,7 @@ export function FinalCTASection() {
         </Reveal>
 
         <Reveal delay={0.32} amount={0.35}>
-          <p className="mt-7 text-xs font-medium tracking-[0.08em] text-red-200/74">
+          <p className="mt-5 text-xs font-medium tracking-[0.08em] text-red-200/74 sm:mt-7">
             Limited availability for peak event dates
           </p>
         </Reveal>
