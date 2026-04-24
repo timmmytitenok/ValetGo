@@ -42,14 +42,13 @@ export function FinalCTASection() {
         <Reveal delay={0.24} amount={0.35}>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
-              <button
-                type="button"
-                aria-disabled="true"
+              <Link
+                href="/request-quote"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 text-base font-semibold text-white shadow-[0_12px_34px_rgba(220,38,38,0.45)] transition-all duration-300 hover:bg-red-500 hover:shadow-[0_18px_44px_rgba(220,38,38,0.56)] sm:min-h-14 sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
               >
                 Request a Quote
                 <ArrowRight className="h-5 w-5" />
-              </button>
+              </Link>
             </MotionHover>
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
               <Link
