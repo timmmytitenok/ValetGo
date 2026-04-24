@@ -34,7 +34,7 @@ export function HeroSection() {
         className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/95"
         aria-hidden
       />
-      <div className="pointer-events-none absolute inset-0 z-[2] hidden opacity-30 sm:block" aria-hidden>
+      <div className="pointer-events-none absolute inset-0 z-[2] hidden opacity-30 md:block" aria-hidden>
         <LightRays
           raysOrigin="top-center"
           raysColor="#ef4444"
@@ -70,7 +70,7 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl items-start justify-center px-4 pb-16 pt-[6.5rem] sm:px-6 sm:pb-20 sm:pt-[10.5rem]">
         <div className="flex w-full flex-col items-center text-center">
           <Reveal delay={0.06} distance={30} blur={8}>
-            <div className="mb-6 mt-5 inline-flex max-w-full items-center rounded-full border border-red-400/50 bg-black/35 px-3 py-1.5 text-[10px] font-semibold tracking-[0.18em] text-red-100 shadow-[0_0_40px_rgba(220,38,38,0.24)] backdrop-blur-sm sm:mb-7 sm:mt-0 sm:px-5 sm:py-2 sm:text-xs sm:tracking-[0.28em]">
+            <div className="mb-6 mt-6 inline-flex max-w-full items-center rounded-full border border-red-400/50 bg-black/35 px-3 py-1.5 text-[10px] font-semibold tracking-[0.18em] text-red-100 shadow-[0_0_40px_rgba(220,38,38,0.24)] backdrop-blur-sm sm:mb-7 sm:mt-0 sm:px-5 sm:py-2 sm:text-xs sm:tracking-[0.28em]">
               PREMIUM EVENT VALET SERVICE
             </div>
           </Reveal>
@@ -90,7 +90,7 @@ export function HeroSection() {
           </Reveal>
 
           <Reveal delay={0.38} distance={26} blur={6}>
-            <div className="mt-8 -mx-4 flex w-[calc(100%+2rem)] max-w-none flex-col justify-center gap-3 sm:mx-0 sm:mt-9 sm:w-full sm:max-w-xl sm:flex-row sm:items-center sm:gap-4 sm:p-3">
+            <div className="relative left-1/2 mt-8 flex w-screen -translate-x-1/2 flex-col justify-center gap-3 px-10 sm:left-auto sm:mt-9 sm:w-full sm:max-w-xl sm:translate-x-0 sm:flex-row sm:items-center sm:gap-4 sm:p-3 sm:px-0">
               <MotionHover type="button" className="order-2 w-full sm:order-1 sm:inline-flex sm:w-auto">
                 <Link
                   href="#quote"
