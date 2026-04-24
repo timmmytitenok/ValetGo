@@ -67,7 +67,7 @@ export function HeroSection() {
         className="pointer-events-none absolute left-1/2 top-[56%] h-48 w-[32rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(220,38,38,0.18)_0%,rgba(0,0,0,0)_72%)] blur-2xl"
         aria-hidden
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-start justify-center px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-40">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-start justify-center px-4 pb-16 pt-[6.5rem] sm:px-6 sm:pb-20 sm:pt-[10.5rem]">
         <div className="flex w-full flex-col items-center text-center">
           <Reveal delay={0.06} distance={30} blur={8}>
             <div className="mb-6 inline-flex max-w-full items-center rounded-full border border-red-400/50 bg-black/35 px-3 py-1.5 text-[10px] font-semibold tracking-[0.18em] text-red-100 shadow-[0_0_40px_rgba(220,38,38,0.24)] backdrop-blur-sm sm:mb-7 sm:px-5 sm:py-2 sm:text-xs sm:tracking-[0.28em]">
