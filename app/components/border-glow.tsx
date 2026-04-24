@@ -24,6 +24,9 @@ type BorderGlowProps = {
   animated?: boolean;
   colors?: string[];
   fillOpacity?: number;
+  scrollReactivePoints?: Array<{ x: number; y: number }>;
+  scrollReactiveOnMobileOnly?: boolean;
+  disablePointerTrackingOnMobileOnly?: boolean;
 };
 
 type AnimationArgs = {
@@ -147,6 +150,9 @@ export default function BorderGlow({
   animated = false,
   colors = DEFAULT_COLORS,
   fillOpacity = 0.5,
+  scrollReactivePoints,
+  scrollReactiveOnMobileOnly = false,
+  disablePointerTrackingOnMobileOnly = false,
 }: BorderGlowProps) {
   const cardRef = useRef<HTMLDivElement | null>(null);
 
@@ -185,6 +191,12 @@ export default function BorderGlow({
     (event: PointerEvent<HTMLDivElement>) => {
       const card = cardRef.current;
       if (!card) return;
+      if (
+        disablePointerTrackingOnMobileOnly &&
+        window.matchMedia("(max-width: 639px)").matches
+      ) {
+        return;
+      }
 
       const rect = card.getBoundingClientRect();
       const x = event.clientX - rect.left;
@@ -196,7 +208,7 @@ export default function BorderGlow({
       card.style.setProperty("--edge-proximity", `${(edge * 100).toFixed(3)}`);
       card.style.setProperty("--cursor-angle", `${angle.toFixed(3)}deg`);
     },
-    [getCursorAngle, getEdgeProximity],
+    [disablePointerTrackingOnMobileOnly, getCursorAngle, getEdgeProximity],
   );
 
   useEffect(() => {
@@ -253,6 +265,89 @@ export default function BorderGlow({
       card.dataset.sweepActive = "false";
     };
   }, [animated]);
+
+  useEffect(() => {
+    if (!scrollReactivePoints?.length || animated || !cardRef.current) return;
+
+    const card = cardRef.current;
+    let rafId = 0;
+
+    const updateReactiveGlow = () => {
+      const isMobile = window.matchMedia("(max-width: 639px)").matches;
+      const enabled = scrollReactiveOnMobileOnly ? isMobile : true;
+
+      if (!enabled) {
+        card.dataset.sweepActive = "false";
+        return;
+      }
+
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      let strongestProximity = 0;
+      let strongestAngle = 0;
+
+      for (const point of scrollReactivePoints) {
+        const viewportX = point.x * window.innerWidth;
+        const viewportY = point.y * window.innerHeight;
+
+        const clampedX = Math.min(Math.max(viewportX, rect.left), rect.right);
+        const clampedY = Math.min(Math.max(viewportY, rect.top), rect.bottom);
+
+        const nearestEdgeDistance = Math.min(
+          clampedX - rect.left,
+          rect.right - clampedX,
+          clampedY - rect.top,
+          rect.bottom - clampedY,
+        );
+        const maxInset = Math.max(Math.min(rect.width, rect.height) / 2, 1);
+        const edgeProximity = 1 - Math.min(Math.max(nearestEdgeDistance / maxInset, 0), 1);
+
+        const distanceToCard = Math.hypot(viewportX - clampedX, viewportY - clampedY);
+        const maxDistance = Math.max(rect.width, rect.height) * 1.2;
+        const distanceFalloff = 1 - Math.min(distanceToCard / maxDistance, 1);
+
+        const proximity = Math.max(
+          0,
+          Math.min(1, edgeProximity * (0.25 + distanceFalloff * 0.75)),
+        );
+
+        if (proximity > strongestProximity) {
+          strongestProximity = proximity;
+          const radians = Math.atan2(viewportY - centerY, viewportX - centerX);
+          let degrees = radians * (180 / Math.PI) + 90;
+          if (degrees < 0) degrees += 360;
+          strongestAngle = degrees;
+        }
+      }
+
+      card.style.setProperty("--edge-proximity", `${(strongestProximity * 100).toFixed(3)}`);
+      card.style.setProperty("--cursor-angle", `${strongestAngle.toFixed(3)}deg`);
+      card.dataset.sweepActive = strongestProximity > 0.02 ? "true" : "false";
+    };
+
+    const scheduleReactiveUpdate = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        updateReactiveGlow();
+      });
+    };
+
+    updateReactiveGlow();
+    window.addEventListener("scroll", scheduleReactiveUpdate, { passive: true });
+    window.addEventListener("resize", scheduleReactiveUpdate);
+    window.addEventListener("orientationchange", scheduleReactiveUpdate);
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", scheduleReactiveUpdate);
+      window.removeEventListener("resize", scheduleReactiveUpdate);
+      window.removeEventListener("orientationchange", scheduleReactiveUpdate);
+      card.dataset.sweepActive = "false";
+    };
+  }, [animated, scrollReactiveOnMobileOnly, scrollReactivePoints]);
 
   const style = useMemo(() => {
     return {

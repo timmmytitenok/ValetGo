@@ -63,21 +63,27 @@ export function WhoItsForSection() {
           <Reveal>
             <h2
               id="who-its-for-title"
-              className="text-balance text-[clamp(1.85rem,7vw,3.25rem)] font-bold leading-tight tracking-tight text-zinc-50"
+              className="text-balance text-[clamp(2.1rem,8.2vw,3.25rem)] font-bold leading-tight tracking-tight text-zinc-50"
             >
               Perfect for Any Event That Matters
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed tracking-[0.01em] text-zinc-200/82 sm:mt-6 sm:text-lg">
-              From intimate gatherings to large-scale events, ValetGo delivers a
-              smooth, professional arrival experience that sets the tone from
-              the very beginning.
+            <p className="mx-auto mb-4 mt-5 max-w-2xl text-pretty text-sm leading-relaxed tracking-[0.01em] text-zinc-200/82 sm:mb-0 sm:mt-6 sm:text-lg">
+              <span className="sm:hidden">
+                From intimate gatherings to large-scale events, ValetGo delivers
+                smooth, professional arrivals.
+              </span>
+              <span className="hidden sm:inline">
+                From intimate gatherings to large-scale events, ValetGo delivers
+                a smooth, professional arrival experience that sets the tone
+                from the very beginning.
+              </span>
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:mt-14 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
           {eventCards.map(({ title, description, icon: Icon }, index) => (
             <Reveal
               key={title}
@@ -99,6 +105,11 @@ export function WhoItsForSection() {
                     animated={false}
                     colors={["#fb7185", "#ef4444", "#f97316"]}
                     fillOpacity={0.42}
+                    scrollReactivePoints={[
+                      { x: 1, y: 0.5 },
+                    ]}
+                    scrollReactiveOnMobileOnly
+                    disablePointerTrackingOnMobileOnly
                     className="h-full"
                   >
                     <div className="flex h-full flex-col p-5 sm:p-6">
@@ -127,7 +138,7 @@ export function WhoItsForSection() {
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
               <Link
                 href="#quote"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_34px_rgba(220,38,38,0.42)] transition-all duration-300 hover:bg-red-500 hover:shadow-[0_18px_44px_rgba(220,38,38,0.5)] sm:w-auto sm:px-7 sm:py-3.5 sm:text-base"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_12px_34px_rgba(220,38,38,0.42)] transition-all duration-300 hover:bg-red-500 hover:shadow-[0_18px_44px_rgba(220,38,38,0.5)] sm:w-auto sm:px-7 sm:py-4 sm:text-base"
               >
                 Request Quote
                 <ArrowRight className="h-4 w-4" />
@@ -136,14 +147,14 @@ export function WhoItsForSection() {
             <MotionHover type="button" className="w-full sm:inline-flex sm:w-auto">
               <Link
                 href="tel:6142181599"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-black/35 px-6 py-3 text-sm font-medium text-white/95 backdrop-blur-sm transition-all duration-300 hover:border-white/45 hover:bg-white/12 sm:w-auto sm:px-7 sm:py-3.5 sm:text-base"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-black/35 px-6 py-3.5 text-sm font-medium text-white/95 backdrop-blur-sm transition-all duration-300 hover:border-white/45 hover:bg-white/12 sm:w-auto sm:px-7 sm:py-4 sm:text-base"
               >
                 <Phone className="h-4 w-4 text-red-300" />
                 Call Now
               </Link>
             </MotionHover>
             </div>
-          <p className="max-w-2xl text-center text-sm tracking-[0.02em] text-zinc-300/72">
+          <p className="mb-4 max-w-2xl text-center text-sm tracking-[0.02em] text-zinc-300/72 sm:mb-6">
             From first impression to final departure.
           </p>
           </div>
