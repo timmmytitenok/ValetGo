@@ -357,31 +357,39 @@ export function RequestQuoteWizard() {
                         </select>
                       ) : null}
                       {field.type !== "textarea" && field.type !== "select" ? (
-                        <input
-                          type={field.type}
-                          value={answers[field.key]}
-                          onChange={(event) => {
-                            if (field.type === "tel") {
-                              setPhoneAnswer(field.key, event.target.value);
-                              return;
+                        field.type === "date" || field.type === "time" ? (
+                          <div className="w-full max-w-full min-w-0 overflow-hidden rounded-2xl border border-white/12 bg-white/[0.03] transition-colors focus-within:border-red-300/55">
+                            <input
+                              type={field.type}
+                              value={answers[field.key]}
+                              onChange={(event) => setAnswer(field.key, event.target.value)}
+                              inputMode="numeric"
+                              className="block w-full max-w-full min-w-0 border-0 bg-transparent px-4 py-3 pr-14 text-sm text-zinc-100 outline-none sm:text-base [&::-webkit-calendar-picker-indicator]:ml-2 [&::-webkit-calendar-picker-indicator]:shrink-0 [&::-webkit-date-and-time-value]:max-w-full [&::-webkit-date-and-time-value]:min-w-0 [&::-webkit-date-and-time-value]:text-left [&::-webkit-datetime-edit]:block [&::-webkit-datetime-edit]:min-w-0 [&::-webkit-datetime-edit-fields-wrapper]:flex [&::-webkit-datetime-edit-fields-wrapper]:min-w-0"
+                            />
+                          </div>
+                        ) : (
+                          <input
+                            type={field.type}
+                            value={answers[field.key]}
+                            onChange={(event) => {
+                              if (field.type === "tel") {
+                                setPhoneAnswer(field.key, event.target.value);
+                                return;
+                              }
+                              setAnswer(field.key, event.target.value);
+                            }}
+                            placeholder={field.placeholder}
+                            inputMode={
+                              field.type === "tel" || field.type === "number"
+                                ? "numeric"
+                                : undefined
                             }
-                            setAnswer(field.key, event.target.value);
-                          }}
-                          placeholder={field.placeholder}
-                          inputMode={
-                            field.type === "tel" || field.type === "number"
-                              ? "numeric"
-                              : undefined
-                          }
-                          maxLength={field.type === "tel" ? 14 : undefined}
-                          min={field.type === "number" ? 1 : undefined}
-                          pattern={field.type === "number" ? "[0-9]*" : undefined}
-                          className={`block w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55 ${
-                            field.type === "date" || field.type === "time"
-                              ? "pr-10 text-sm sm:text-base [&::-webkit-date-and-time-value]:text-left [&::-webkit-datetime-edit]:min-w-0 [&::-webkit-datetime-edit-fields-wrapper]:min-w-0"
-                              : ""
-                          }`}
-                        />
+                            maxLength={field.type === "tel" ? 14 : undefined}
+                            min={field.type === "number" ? 1 : undefined}
+                            pattern={field.type === "number" ? "[0-9]*" : undefined}
+                            className="block w-full max-w-full min-w-0 rounded-2xl border border-white/12 bg-white/[0.03] px-4 py-3 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-400/70 focus:border-red-300/55"
+                          />
+                        )
                       ) : null}
                     </div>
                   ))}
