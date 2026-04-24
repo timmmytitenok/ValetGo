@@ -20,8 +20,7 @@ export default function Home() {
       </main>
       <div className="relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/final-cta-background.png')" }}
+          className="absolute inset-0 bg-[url('/final-cta-footer-background-mobile.png')] bg-cover bg-center bg-no-repeat sm:bg-[url('/final-cta-background.png')]"
           aria-hidden
         />
         <div

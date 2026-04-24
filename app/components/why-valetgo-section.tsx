@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   CarFront,
@@ -43,6 +44,8 @@ const valuePoints = [
 
 export function WhyValetGoSection() {
   const prefersReducedMotion = useReducedMotion();
+  const listRef = useRef<HTMLUListElement | null>(null);
+  const listInView = useInView(listRef, { once: true, amount: 0.2 });
   const scrollToHowItWorks = () => {
     const section = document.getElementById("how-it-works");
     if (!section) return;
@@ -100,13 +103,16 @@ export function WhyValetGoSection() {
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:mt-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
           <div>
-            <ul className="divide-y divide-white/10 border-y border-white/10">
+            <ul ref={listRef} className="divide-y divide-white/10 border-y border-white/10">
               {valuePoints.map(({ title, description, icon: Icon }, index) => (
                 <motion.li
                   key={title}
                   initial={prefersReducedMotion ? false : { opacity: 0, y: 18, filter: "blur(4px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.25 }}
+                  animate={
+                    prefersReducedMotion || listInView
+                      ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                      : { opacity: 0, y: 18, filter: "blur(4px)" }
+                  }
                   transition={{ delay: 0.06 + index * 0.08, duration: 0.72, ease: premiumEase }}
                   className="group py-5 transition-all duration-300 first:pt-6 last:pb-6"
                 >

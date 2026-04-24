@@ -69,14 +69,14 @@ function FAQItem({
   return (
     <motion.article
       whileHover={prefersReducedMotion ? undefined : cardHover}
-      className={`group relative overflow-hidden border backdrop-blur-sm transition-all duration-500 ${
+      className={`group relative overflow-hidden border transition-colors duration-200 sm:backdrop-blur-sm sm:transition-all sm:duration-500 ${
         isOpen
-          ? "rounded-3xl border-red-300/36 bg-gradient-to-b from-[#161616]/96 via-[#0f0f0f]/93 to-[#0a0a0a]/95 shadow-[0_24px_56px_rgba(0,0,0,0.6)]"
-          : "rounded-2xl border-white/10 bg-gradient-to-b from-white/[0.04] via-white/[0.025] to-white/[0.015] shadow-[0_12px_30px_rgba(0,0,0,0.4)] sm:hover:-translate-y-0.5 sm:hover:border-white/20 sm:hover:bg-gradient-to-b sm:hover:from-white/[0.05] sm:hover:via-white/[0.03] sm:hover:to-white/[0.018] sm:hover:shadow-[0_18px_42px_rgba(0,0,0,0.48)]"
+          ? "rounded-3xl border-red-300/36 bg-gradient-to-b from-[#161616]/96 via-[#0f0f0f]/93 to-[#0a0a0a]/95 shadow-[0_10px_26px_rgba(0,0,0,0.44)] sm:shadow-[0_24px_56px_rgba(0,0,0,0.6)]"
+          : "rounded-2xl border-white/10 bg-gradient-to-b from-white/[0.04] via-white/[0.025] to-white/[0.015] shadow-[0_8px_20px_rgba(0,0,0,0.34)] sm:shadow-[0_12px_30px_rgba(0,0,0,0.4)] sm:hover:-translate-y-0.5 sm:hover:border-white/20 sm:hover:bg-gradient-to-b sm:hover:from-white/[0.05] sm:hover:via-white/[0.03] sm:hover:to-white/[0.018] sm:hover:shadow-[0_18px_42px_rgba(0,0,0,0.48)]"
       }`}
     >
       <div
-        className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
+        className={`pointer-events-none absolute inset-0 transition-opacity duration-200 sm:duration-500 ${
           isOpen
             ? "opacity-100 bg-[radial-gradient(circle_at_12%_8%,rgba(239,68,68,0.2)_0%,rgba(127,29,29,0.07)_35%,rgba(0,0,0,0)_74%)]"
             : "opacity-0 sm:group-hover:opacity-100 bg-[radial-gradient(circle_at_12%_8%,rgba(239,68,68,0.12)_0%,rgba(127,29,29,0.04)_35%,rgba(0,0,0,0)_74%)]"
@@ -104,14 +104,14 @@ function FAQItem({
             {faq.question}
           </span>
           <span
-            className={`inline-flex shrink-0 items-center justify-center rounded-xl border transition-all duration-500 ${
+            className={`inline-flex shrink-0 items-center justify-center rounded-xl border transition-all duration-200 sm:duration-500 ${
               isOpen
                 ? "h-10 w-10 border-red-300/45 bg-red-500/18 text-red-100 shadow-[0_0_26px_rgba(220,38,38,0.34)] sm:h-11 sm:w-11"
                 : "h-9 w-9 border-white/14 bg-black/35 text-zinc-200/78 sm:h-10 sm:w-10 sm:group-hover:border-white/26 sm:group-hover:text-zinc-50"
             }`}
           >
             <ChevronDown
-              className={`h-4 w-4 transition-transform duration-500 sm:h-5 sm:w-5 ${
+              className={`h-4 w-4 transition-transform duration-200 sm:h-5 sm:w-5 sm:duration-500 ${
                 isOpen ? "rotate-180" : "rotate-0"
               }`}
             />
@@ -120,7 +120,7 @@ function FAQItem({
       </h3>
 
       <div
-        className={`grid overflow-hidden transition-all duration-500 ease-out ${
+        className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-200 ease-out sm:duration-500 ${
           isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
@@ -131,10 +131,10 @@ function FAQItem({
           className="overflow-hidden"
         >
           <p
-            className={`px-4 pb-5 text-[0.92rem] leading-relaxed tracking-[0.01em] transition-all duration-500 sm:px-8 sm:pb-7 sm:text-base ${
+            className={`px-4 pb-5 text-[0.92rem] leading-relaxed tracking-[0.01em] transition-opacity duration-200 sm:px-8 sm:pb-7 sm:text-base sm:transition-all sm:duration-500 ${
               isOpen
                 ? "translate-y-0 text-zinc-200/86 opacity-100"
-                : "-translate-y-1 text-zinc-200/74 opacity-0"
+                : "translate-y-0 text-zinc-200/74 opacity-0 sm:-translate-y-1"
             }`}
           >
             {faq.answer}
