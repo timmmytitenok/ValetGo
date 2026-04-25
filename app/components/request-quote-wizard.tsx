@@ -184,12 +184,13 @@ export function RequestQuoteWizard() {
   const [submitted, setSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60);
   const [attemptedNext, setAttemptedNext] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const currentSection = sections[step];
 
   useEffect(() => {
     if (!submitted) return;
-    setTimeLeft(24 * 60 * 60);
     const interval = window.setInterval(() => {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
@@ -220,19 +221,56 @@ export function RequestQuoteWizard() {
     });
   }, [answers, currentSection.fields]);
 
+  const submitRequest = async () => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("/api/request-quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(answers),
+      });
+
+      const payload = (await response.json().catch(() => null)) as
+        | { error?: string }
+        | null;
+
+      if (!response.ok) {
+        throw new Error(payload?.error ?? "Unable to submit your request right now.");
+      }
+
+      setTimeLeft(24 * 60 * 60);
+      setSubmitted(true);
+    } catch (error) {
+      if (error instanceof Error) {
+        setSubmitError(error.message);
+      } else {
+        setSubmitError("Unable to submit your request right now.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const goNext = () => {
+    setSubmitError(null);
     setAttemptedNext(true);
     if (!currentValid) return;
     setAttemptedNext(false);
     if (step === sections.length - 1) {
-      setSubmitted(true);
+      void submitRequest();
       return;
     }
     setStep((prev) => prev + 1);
   };
 
   const goBack = () => {
+    if (isSubmitting) return;
     setAttemptedNext(false);
+    setSubmitError(null);
     setStep((prev) => Math.max(0, prev - 1));
   };
 
@@ -402,12 +440,15 @@ export function RequestQuoteWizard() {
                 >
                   Please fill this out to continue.
                 </p>
+                {submitError ? (
+                  <p className="mt-2 text-sm text-red-200">{submitError}</p>
+                ) : null}
 
                 <div className="mt-6 flex gap-3">
                   <button
                     type="button"
                     onClick={goBack}
-                    disabled={step === 0}
+                    disabled={step === 0 || isSubmitting}
                     className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.03] px-5 text-sm font-medium text-zinc-100 transition-colors hover:bg-white/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     Back
@@ -415,10 +456,14 @@ export function RequestQuoteWizard() {
                   <button
                     type="button"
                     onClick={goNext}
-                    disabled={!currentValid}
+                    disabled={!currentValid || isSubmitting}
                     className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 text-sm font-semibold text-white shadow-[0_10px_26px_rgba(220,38,38,0.4)] transition-colors hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:bg-red-600"
                   >
-                    {step === sections.length - 1 ? "Submit Request" : "Continue"}
+                    {step === sections.length - 1
+                      ? isSubmitting
+                        ? "Sending Request..."
+                        : "Submit Request"
+                      : "Continue"}
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
